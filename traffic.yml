@@ -1,0 +1,13 @@
+# Path to your processed folder
+path: ./UA-DETRAC-Processed 
+
+# Folders for the AI to look into
+train: images/train
+val: images/val
+
+# The classes we defined in our conversion script
+names:
+  0: car
+  1: bus
+  2: van
+  3: others
