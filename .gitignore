@@ -3,3 +3,5 @@ DETRAC-Images/
 DETRAC-Train-Annotations-XML/
 DETRAC-Test-Annotations-XML/
 DETRAC-MOT-toolkit
+runs/
+yolo*
