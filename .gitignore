@@ -5,3 +5,11 @@ DETRAC-Test-Annotations-XML/
 DETRAC-MOT-toolkit
 runs/
 yolo*
+*.pdf
+Vietnamese-Traffic/
+detect_yolov8n/
+detect_yolov8s/
+__pycache__/
+Example_output/
+Test-Video/
+Papers/

@@ -28,12 +28,14 @@ class TrafficCounter:
         self.iou_threshold = iou_threshold
         
         # Class names
-        self.class_names = {0: 'car', 1: 'bus', 2: 'van', 3: 'others'}
+        self.class_names = {0: 'car', 1: 'bus', 2: 'van', 3: 'others', 4: 'motorbike', 5: 'bicycle'}
         self.class_colors = {
             0: (0, 255, 0),    # car - green
             1: (255, 0, 0),    # bus - blue
             2: (0, 0, 255),    # van - red
-            3: (255, 255, 0)   # others - cyan
+            3: (255, 255, 0),   # others - cyan
+            4: (255, 0, 255),   # motorbike - magenta
+            5: (0, 255, 255)    # bicycle - yellow
         }
         
         # Tracking and counting variables
@@ -192,7 +194,9 @@ class TrafficCounter:
             f"Car: {self.counts['car']}",
             f"Bus: {self.counts['bus']}",
             f"Van: {self.counts['van']}",
-            f"Others: {self.counts['others']}"
+            f"Others: {self.counts['others']}",
+            f"Motorbike: {self.counts['motorbike']}",
+            f"Bicycle: {self.counts['bicycle']}"
         ]
         
         max_width = max([cv2.getTextSize(line, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2)[0][0] 
@@ -219,9 +223,9 @@ class TrafficCounter:
 def main():
     parser = argparse.ArgumentParser(description='Traffic Tracking and Counting with YOLOv8')
     parser.add_argument('--model', type=str, 
-                       default='detect/traffic_model6/weights/best.pt',
+                       default='detect_yolov8n/traffic_model6/weights/best.pt',
                        help='Path to trained YOLOv8 model weights')
-    parser.add_argument('--source', type=str, default='0',
+    parser.add_argument('--source', type=str, default='Test-Video/bandicam 2026-02-24 15-53-23-428.mp4',
                        help='Video source (0 for webcam, or path to video file)')
     parser.add_argument('--conf', type=float, default=0.25,
                        help='Confidence threshold')
@@ -229,7 +233,7 @@ def main():
                        help='IoU threshold for NMS')
     parser.add_argument('--line-y', type=int, default=None,
                        help='Y position of counting line (if not set, will use middle of frame)')
-    parser.add_argument('--output', type=str, default=None,
+    parser.add_argument('--output', type=str, default='Example_output/example_output.mp4',
                        help='Output video path (optional)')
     
     args = parser.parse_args()
@@ -343,6 +347,8 @@ def main():
         print(f"  - Buses: {counter.counts['bus']}")
         print(f"  - Vans: {counter.counts['van']}")
         print(f"  - Others: {counter.counts['others']}")
+        print(f"  - Motorbikes: {counter.counts['motorbike']}")
+        print(f"  - Bicycles: {counter.counts['bicycle']}")
         print(f"Total frames processed: {frame_count}")
 
 

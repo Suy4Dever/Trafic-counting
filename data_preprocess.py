@@ -7,13 +7,16 @@ import random
 
 # --- 1. SETUP PATHS ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATASET_DIR = os.path.join(BASE_DIR, 'Vietnamese-Traffic')
+print(f"📁 Base Directory: {BASE_DIR}")
+print(f"📁 Dataset Directory: {DATASET_DIR}")
 # Where you want the output to go
-OUTPUT_PATH = os.path.join(BASE_DIR, 'UA-DETRAC-Processed')
+OUTPUT_PATH = os.path.join(DATASET_DIR, 'UA-DETRAC-Processed')
 
 # Point these to your downloaded folders
 # (Adjust these names if yours are slightly different)
-IMAGES_DIR_ROOT = os.path.join(BASE_DIR, 'DETRAC-Images')
-ANNOTATIONS_DIR_ROOT = os.path.join(BASE_DIR, 'DETRAC-Train-Annotations-XML')
+IMAGES_DIR_ROOT = os.path.join(DATASET_DIR, 'DETRAC-Images')
+ANNOTATIONS_DIR_ROOT = os.path.join(DATASET_DIR, 'DETRAC-Train-Annotations-XML')
 
 CLASS_MAPPING = {'car': 0, 'bus': 1, 'van': 2, 'others': 3}
 
