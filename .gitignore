@@ -5,3 +5,4 @@ DETRAC-Test-Annotations-XML/
 DETRAC-MOT-toolkit
 runs/
 yolo*
+.venv/
